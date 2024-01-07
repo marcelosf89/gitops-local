@@ -1,7 +1,7 @@
 .EXPORT_ALL_VARIABLES:
 
-path =$(if $(path), $(path), "./")
-repo_username =$(if $(repo_username), $(repo_username), "masf89")
+path :=$(if $(path), $(path), "./")
+repo_username :=$(if $(repo_username), $(repo_username), "masf89")
 
 
 ## Minikube commands
