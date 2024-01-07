@@ -25,14 +25,14 @@ spec:
         - name: web
           image: {{ .Values.image.name }}:{{ .Values.image.tag }}
           ports:
-            - containerPort: 8484
-          # readinessProbe:
-          #   httpGet:
-          #     scheme: HTTP
-          #     path: /status
-          #     port: 8484
-          #   initialDelaySeconds: 3
-          #   periodSeconds: 10
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 10
           envFrom:
             - secretRef:
                 name: web-mysql-secrets

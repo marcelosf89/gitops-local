@@ -29,5 +29,5 @@ COPY --from=builder /go/src/echo/.bin/release/linux/web /go/bin/web
 
 USER containeruser:containeruser
 
-EXPOSE 8181
+EXPOSE 8080
 ENTRYPOINT ["/go/bin/web"]

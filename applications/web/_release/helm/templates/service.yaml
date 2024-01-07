@@ -9,9 +9,9 @@ metadata:
   namespace: web
 spec:
   ports:
-  - name: "8484"
-    port: 8484
-    targetPort: 8484
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
   selector:
      app.kubernetes.io/name: web
   type: NodePort
