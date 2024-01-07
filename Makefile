@@ -67,5 +67,5 @@ app-update-release:
 	@ helm template applications/$(app)/helm/helm/ --set image.tag=$(version) --values ./applications/$(app)/helm/helm/values."$(environment)".yaml > applications/$(app)/helm/env/"$(environment)"/deploy.yaml
 	@ git add .
 	@ git commit --allow-empty -m "release to $(environment) with the version $(version)"
-	@ git push $(repo_appsets)
+	@ git push https://github.com/$(repo_appsets).git
 
