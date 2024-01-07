@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"os"
 	"net/http"
 	"strconv"
 
@@ -13,7 +14,8 @@ import (
 func main() {
 	e := echo.New()
 	// TODO: use the docker images user name and password config
-	db, err := sql.Open(os.GetEnv("MYSQL_HOST"), os.GetEnv("MYSQL_USER") + ":" +os.GetEnv("MYSQL_PASSWORD") + "/" os.GetEnv("MYSQL_DATABASE"))
+	conn := os.GetEnv("MYSQL_USER") + ":" + os.GetEnv("MYSQL_PASSWORD") + "/" + os.GetEnv("MYSQL_DATABASE")
+	db, err := sql.Open(os.GetEnv("MYSQL_HOST"), conn)
 	if err != nil {
 		panic(err.Error())
 	}
