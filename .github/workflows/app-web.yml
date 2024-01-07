@@ -100,4 +100,4 @@ jobs:
 
       - name: Deploy helmchart to dev
         run: |
-          make app-update-release app=$app version=${{ needs.build.outputs.build_id }} repo_appsets=${{ github.repository }} environment="dev"
+          make push-update-release app=$app version=${{ needs.build.outputs.build_id }} repo_appsets=${{ github.repository }} environment="dev"

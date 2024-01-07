@@ -64,15 +64,15 @@ app-update:
 	@ configurations/appsets/update-appsets.sh $(app) 
 
 
-
 app-update-release:
 	@ configurations/_scripts/helm/release-app.sh $(app) $(environment) $(version)
 
+push-update-release: app-update-release
 	@ git config user.name github-actions
 	@ git config user.email github-actions@github.com
 
 	@ git add applications/$(app)/_release/env/$(environment)/	
-	
+
 	@ git commit --allow-empty -m "release to $(environment) with the version $(version)"
 	@ git push https://github.com/$(repo_appsets).git
 

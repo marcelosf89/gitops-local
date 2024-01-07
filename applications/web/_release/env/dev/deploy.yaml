@@ -1,0 +1,131 @@
+---
+# Source: web/templates/namespace.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: web
+---
+# Source: web/templates/secrets.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: web-mysql-secrets
+  namespace: web
+  service: web
+data:
+  mysql-database: d2ViX2Ri
+  mysql_host: bXlzcWwtc2VydmVyLm15c3FsLXNlcnZlci5zdmMuY2x1c3Rlci5sb2NhbDozMzA2
+  mysql_password: d2ViX3VzZXI=
+  mysql_user: d2ViX3VzZXI=
+---
+# Source: web/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: web
+    release: metrics
+    app.kubernetes.io/name: web
+  name: web-service
+  namespace: web
+spec:
+  ports:
+  - name: "8484"
+    port: 8484
+    targetPort: 8484
+  selector:
+     app.kubernetes.io/name: web
+  type: NodePort
+---
+# Source: web/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: web
+    app.kubernetes.io/name: web
+  name: web
+  namespace: web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: web
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: web
+    spec:
+      containers:
+        - name: web
+          image: dockerhub.com/masf89/web:v0.0.1
+          ports:
+            - containerPort: 8484
+          # readinessProbe:
+          #   httpGet:
+          #     scheme: HTTP
+          #     path: /status
+          #     port: 8484
+          #   initialDelaySeconds: 3
+          #   periodSeconds: 10
+          envFrom:
+            - secretRef:
+                name: web-mysql-secrets
+          resources:
+            limits:
+              memory: "128Mi"
+            requests:
+              cpu: "20m"
+              memory: "128Mi"
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsUser: 10001
+            runAsGroup: 10001
+            capabilities:
+              drop: ["ALL"]
+      restartPolicy: Always
+---
+# Source: web/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-ingress
+  namespace: argocd
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: web-service
+                port:
+                  number: 80
+---
+# Source: web/templates/service-monitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: web-metrics
+  namespace: web
+  labels:
+    release: metrics
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: web
+  endpoints:
+    - port: "8081"
+      path: /metrics
+      scrapeTimeout: 10s
+      interval: 10s
+  namespaceSelector:
+    matchNames:
+      - web

@@ -4,6 +4,4 @@ bin/
 **/bin/
 
 
-**/env/*/deploy.yaml
-
 .ignore/
