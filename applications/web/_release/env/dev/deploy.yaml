@@ -17,6 +17,7 @@ data:
   mysql_host: bXlzcWwtc2VydmVyLm15c3FsLXNlcnZlci5zdmMuY2x1c3Rlci5sb2NhbDozMzA2
   mysql_password: d2ViX3VzZXI=
   mysql_user: d2ViX3VzZXI=
+type: Opaque
 ---
 # Source: web/templates/service.yaml
 apiVersion: v1
