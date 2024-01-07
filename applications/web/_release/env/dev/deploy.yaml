@@ -11,12 +11,12 @@ kind: Secret
 metadata:
   name: web-mysql-secrets
   namespace: web
-data:
-  mysql_database: d2ViX2Ri
-  mysql_host: bXlzcWwtc2VydmVyLm15c3FsLXNlcnZlci5zdmMuY2x1c3Rlci5sb2NhbDozMzA2
-  mysql_password: d2ViX3VzZXI=
-  mysql_user: d2ViX3VzZXI=
 type: Opaque
+data:
+  MYSQL_DATABASE: d2ViX2Ri
+  MYSQL_HOST: bXlzcWwtc2VydmVyLm15c3FsLXNlcnZlci5zdmMuY2x1c3Rlci5sb2NhbDozMzA2
+  MYSQL_PASSWORD: d2ViX3VzZXI=
+  MYSQL_USER: d2ViX3VzZXI=
 ---
 # Source: web/templates/service.yaml
 apiVersion: v1
@@ -63,7 +63,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: dockerhub.com/masf89/web:v0.0.1-733a8b1
+          image: dockerhub.com/masf89/web:v0.0.1-fe4d422
           ports:
             - containerPort: 8484
           # readinessProbe:
