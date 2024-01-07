@@ -8,6 +8,9 @@ metadata:
   namespace: web
 spec:
   replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: web
   strategy:
     type: RollingUpdate
     rollingUpdate:

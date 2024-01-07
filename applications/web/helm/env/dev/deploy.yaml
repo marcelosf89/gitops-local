@@ -35,6 +35,9 @@ metadata:
   namespace: web
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: web
   strategy:
     type: RollingUpdate
     rollingUpdate:
