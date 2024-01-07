@@ -83,4 +83,4 @@ jobs:
 
       - name: Docker Push
         run: |
-          make app-docker-push app=$app version=${{ needs.build.outputs.build_id }}
+          make app-docker-push app=$app version=${{ needs.build.outputs.build_id }} repo_username=${{ secrets.DOCKERHUB_USERNAME }}

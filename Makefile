@@ -45,7 +45,7 @@ app-docker-build: app-build-common
 	@ docker build applications/$(app) -t $(app):$(version)
 
 app-docker-push: app-build-common
-	@ docker push $(app):$(version)
+	@ docker push $(repo_username)/$(app):$(version)
 
 app-scan:
 	@ go install github.com/securego/gosec/v2/cmd/gosec@latest
