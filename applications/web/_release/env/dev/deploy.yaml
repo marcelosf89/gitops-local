@@ -63,7 +63,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: dockerhub.com/masf89/web:v0.0.1-fe4d422
+          image: masf89/web:v0.0.1-fe4d422
           ports:
             - containerPort: 8484
           # readinessProbe:
