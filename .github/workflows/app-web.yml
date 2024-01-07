@@ -21,7 +21,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     outputs:
-      build_id: ${{ steps.build-ids.outputs.tag }}${{ steps.build-ids.outputs.sha }}
+      build_id: ${{ steps.version.outputs.tag }}${{ steps.version.outputs.sha }}
 
     steps:
       - name: Checkout
