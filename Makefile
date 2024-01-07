@@ -42,10 +42,10 @@ app-build-release: app-build-common
 
 
 app-docker-build: app-build-common
-	@ docker build applications/$(app) -t $(app):$(varsion)
+	@ docker build applications/$(app) -t $(app):$(version)
 
 app-docker-push: app-build-common
-	@ docker push -t $(app):$(varsion)
+	@ docker push -t $(app):$(version)
 
 app-scan:
 	@ go install github.com/securego/gosec/v2/cmd/gosec@latest
