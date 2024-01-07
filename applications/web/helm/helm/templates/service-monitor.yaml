@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: web-metrics
+  namespace: web
+  labels:
+    release: prom-stack
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: web
+  endpoints:
+    - port: "8081"
+      path: /metrics
+      scrapeTimeout: 10s
+      interval: 10s
+  namespaceSelector:
+    matchNames:
+      - web

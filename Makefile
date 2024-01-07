@@ -26,33 +26,44 @@ init-setup:
 
 app-build-common:
 	@ echo "selecting module $(app)"
-	@ cd applications/$(app) && go clean  
-	@ cd applications/$(app) && go mod tidy && go mod download
-	@ cd applications/$(app) && go mod verify
+	@ cd applications/$(app)/src && go clean  
+	@ cd applications/$(app)/src && go mod tidy && go mod download
+	@ cd applications/$(app)/src && go mod verify
 
 app-build: app-build-common
 	@ echo clean
-	@ rm -f applications/$(app)/.bin/debug
+	@ rm -f applications/$(app)/src/.bin/debug
 	@ echo building...
-	@ cd applications/$(app) && go build -tags debug -o ".bin/debug" main.go
-	@ ls -lah applications/$(app)/.bin/debug
+	@ cd applications/$(app)/src && go build -tags debug -o ".bin/debug" main.go
+	@ ls -lah applications/$(app)/src/.bin/debug
 
 app-build-release: app-build-common
 	@ echo clean
-	@ rm -f applications/$(app)/.bin/release
+	@ rm -f applications/$(app)/src /.bin/release
 	@ echo build release
-	@ cd applications/$(app) && CGO_ENABLED=0 go build -ldflags='-w -s -extldflags "-static"' -a -o ".bin/release" main.go
-	@ ls -lah applications/$(app)/.bin/release
+	@ cd applications/$(app)/src  && CGO_ENABLED=0 go build -ldflags='-w -s -extldflags "-static"' -a -o ".bin/release" main.go
+	@ ls -lah applications/$(app)//src .bin/release
 
 
 app-docker-build: app-build-common
-	@ docker build applications/$(app) -t $(repo_username)/$(app):$(version)
+	@ docker build applications/$(app)/src -t $(repo_username)/$(app):$(version)
 
 app-docker-push: app-build-common
 	@ docker push $(repo_username)/$(app):$(version)
 
 app-scan:
 	@ go install github.com/securego/gosec/v2/cmd/gosec@latest
-	@ gosec -fmt=sarif -out=applications/$(app).sarif -exclude=_test -severity=medium ./applications/$(app)/... | 2>&1
+	@ gosec -fmt=sarif -out=applications/$(app).sarif -exclude=_test -severity=medium ./applications/$(app)/src/... | 2>&1
 	@ cat $(path)applications/$(app).sarif
+
+
+app-install: 
+	@ configurations/appsets/install-appsets.sh $(app) $(repo_appsets) $(pat_token)
+
+
+app-update-release:
+	@ helm template applications/$(app)/helm/helm/ --set image.tag=$(version) --values ./applications/$(app)/helm/helm/values."$(environment)".yaml > applications/$(app)/helm/env/"$(environment)"/deploy.yaml
+	@ git add .
+	@ git commit --allow-empty -m "release to $(environment) with the version $(version)"
+	@ git push $(repo_appsets)
 

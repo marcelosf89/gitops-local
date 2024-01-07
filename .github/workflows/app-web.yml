@@ -6,7 +6,7 @@ on:
       - v0.*.*
     branches: [ main, feat/*, feature/* ]
     paths:
-        - 'applications/webserver/**'
+        - 'applications/web/src/**'
         - '.github/workflows/app-web.yml'
 
   workflow_dispatch:

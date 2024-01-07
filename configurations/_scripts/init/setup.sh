@@ -20,4 +20,4 @@ fi
 minikube addons enable ingress
 
 #1. Deploy argocd on minikube
-$PWD/_scripts/init/apps/argocd.sh
+$PWD/configurations/_scripts/init/apps/argocd.sh

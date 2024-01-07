@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: web
+  namespace: argocd
+spec:
+  destination:
+    name: in-cluster
+    namespace: web
+  project: default
+  source:
+    path: environment/dev
+    repoURL: https://github.com/marcelosf89/gitops-local.git
+    targetRevision: main
+  syncPolicy:
+    automated: {}
