@@ -2,3 +2,6 @@
 
 bin/
 **/bin/
+
+
+**/env/*/deploy.yaml

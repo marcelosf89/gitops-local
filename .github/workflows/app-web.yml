@@ -84,3 +84,20 @@ jobs:
       - name: Docker Push
         run: |
           make app-docker-push app=$app version=${{ needs.build.outputs.build_id }}
+
+
+  deploy-helm:
+    needs:
+        - build
+        - docker
+    
+    name: Deploy Helmchart
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Deploy helmchart to dev
+        run: |
+          make app-update-release app=$app version=${{ needs.build.outputs.build_id }} repo_appsets=${{ github.repository }} environment="dev"

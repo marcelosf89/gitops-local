@@ -62,6 +62,8 @@ app-install:
 
 
 app-update-release:
+	@ git config user.name github-actions
+	@ git config user.email github-actions@github.com
 	@ helm template applications/$(app)/helm/helm/ --set image.tag=$(version) --values ./applications/$(app)/helm/helm/values."$(environment)".yaml > applications/$(app)/helm/env/"$(environment)"/deploy.yaml
 	@ git add .
 	@ git commit --allow-empty -m "release to $(environment) with the version $(version)"

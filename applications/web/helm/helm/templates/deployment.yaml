@@ -19,7 +19,7 @@ spec:
         app.kubernetes.io/name: web
     spec:
       containers:
-        - name: <application-name>
+        - name: web
           image: {{ .Values.image.name }}:{{ .Values.image.tag }}
           ports:
             - containerPort: 8484
