@@ -63,7 +63,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: masf89/web:v0.0.1-14b5090
+          image: masf89/web:v0.0.1-fe13a91
           ports:
             - containerPort: 8080
           readinessProbe:
