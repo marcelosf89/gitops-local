@@ -10,7 +10,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: web
   endpoints:
-    - port: "8081"
+    - port: "8080"
       path: /metrics
       scrapeTimeout: 10s
       interval: 10s
