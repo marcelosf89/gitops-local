@@ -9,10 +9,17 @@ import (
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo-contrib/echoprometheus"
 )
 
 func main() {
+
+	
 	e := echo.New()
+
+	e.Use(echoprometheus.NewMiddleware("web")) // adds middleware to gather metrics
+	e.GET("/metrics", echoprometheus.NewHandler()) // adds route to serve gathered metrics
+
 	// TODO: use the docker images user name and password config
 	conn := os.Getenv("MYSQL_USER") + ":" + os.Getenv("MYSQL_PASSWORD") + "@tcp(" + os.Getenv("MYSQL_HOST") + ")/" + os.Getenv("MYSQL_DATABASE")
 	db, err := sql.Open("mysql", conn)
