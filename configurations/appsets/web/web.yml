@@ -9,7 +9,7 @@ spec:
     namespace: web
   project: default
   source:
-    path: environment/dev
+    path: applications/web/helm/env/dev
     repoURL: https://github.com/marcelosf89/gitops-local.git
     targetRevision: main
   syncPolicy:

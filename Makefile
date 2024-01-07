@@ -60,6 +60,10 @@ app-scan:
 app-install: 
 	@ configurations/appsets/install-appsets.sh $(app) $(repo_appsets) $(pat_token)
 
+app-update: 
+	@ configurations/appsets/update-appsets.sh $(app) 
+
+
 
 app-update-release:
 	@ git config user.name github-actions
