@@ -30,9 +30,9 @@ metadata:
   namespace: web
 spec:
   ports:
-  - name: "8484"
-    port: 8484
-    targetPort: 8484
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
   selector:
      app.kubernetes.io/name: web
   type: NodePort
@@ -63,16 +63,16 @@ spec:
     spec:
       containers:
         - name: web
-          image: masf89/web:v0.0.1-e4fe158
+          image: masf89/web:v0.0.1-14b5090
           ports:
-            - containerPort: 8484
-          # readinessProbe:
-          #   httpGet:
-          #     scheme: HTTP
-          #     path: /status
-          #     port: 8484
-          #   initialDelaySeconds: 3
-          #   periodSeconds: 10
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 10
           envFrom:
             - secretRef:
                 name: web-mysql-secrets
