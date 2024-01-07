@@ -1,5 +1,5 @@
 image:
-  name: dockerhub.com/masf89/web
+  name: masf89/web
   tag: latest
 
 replicas: 3
