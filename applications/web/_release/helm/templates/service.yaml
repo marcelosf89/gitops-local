@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     service: web
-    release: prom-stack
+    release: metrics
     app.kubernetes.io/name: web
   name: web-service
   namespace: web

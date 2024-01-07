@@ -5,3 +5,5 @@ bin/
 
 
 **/env/*/deploy.yaml
+
+.ignore/

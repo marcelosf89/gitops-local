@@ -66,10 +66,16 @@ app-update:
 
 
 app-update-release:
+	@ configurations/_scripts/helm/release-app.sh $(app) $(environment) $(version)
+
 	@ git config user.name github-actions
 	@ git config user.email github-actions@github.com
-	@ helm template applications/$(app)/helm/helm/ --set image.tag=$(version) --values ./applications/$(app)/helm/helm/values."$(environment)".yaml > applications/$(app)/helm/env/"$(environment)"/deploy.yaml
-	@ git add .
+
+	@ git add applications/$(app)/_release/env/$(environment)/	
+	
 	@ git commit --allow-empty -m "release to $(environment) with the version $(version)"
 	@ git push https://github.com/$(repo_appsets).git
 
+
+third-parties-install: 
+	@ configurations/third_parties/$(name)/install.sh

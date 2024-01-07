@@ -1,0 +1,19 @@
+image:
+  registry: quay.io
+  repository: ''
+
+prometheus:
+  prometheusSpec:
+    enableRemoteWriteReceiver: true
+
+grafana:
+  persistence:
+    enabled: true
+    type: pvc
+    accessModes:
+      - ReadWriteOnce
+    finalizers:
+      - kubernetes.io/pvc-protection
+    size: 1Gi
+  service:
+    type: ClusterIP

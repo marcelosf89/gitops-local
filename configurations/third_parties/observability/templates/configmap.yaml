@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboards-observability
+  namespace: observability
+  labels:
+    grafana_dashboard: "1"
+    release: "metrics"
+data:
+  mysql.json: |-
+{{ .Files.Get "dashboards/mysql.json" | indent 4 }}
