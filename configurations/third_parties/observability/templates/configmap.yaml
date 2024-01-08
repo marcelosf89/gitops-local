@@ -9,5 +9,9 @@ metadata:
 data:
   mysql.json: |-
 {{ .Files.Get "dashboards/mysql.json" | indent 4 }}
+
   go_process.json: |-
 {{ .Files.Get "dashboards/go_process.json" | indent 4 }}
+
+  k6.json: |-
+{{ .Files.Get "dashboards/k6.json" | indent 4 }}
