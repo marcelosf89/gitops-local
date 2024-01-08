@@ -74,7 +74,7 @@ push-update-release: app-update-release
 	@ git add applications/$(app)/_release/env/$(environment)/	
 
 	@ git commit --allow-empty -m "release to $(environment) with the version $(version)"
-	@ git push https://github.com/$(repo_appsets).git
+	@ git push https://github.com/$(repo_appsets).git HEAD:main
 
 # Install Third Parties
 third-parties-install: 
