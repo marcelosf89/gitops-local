@@ -1,6 +1,6 @@
 # Solution
 
-To adhere to GitOps principles, our solution leverages Kubernetes (k8s) with ArgoCD for declarative and automated application deployment. Additionally, Prometheus and Grafana are utilized to enhance observability within the system.
+To adhere to GitOps principles, my solution leverages Kubernetes (k8s) with ArgoCD for declarative and automated application deployment. Additionally, Prometheus and Grafana are utilized to enhance observability within the system.
 
 ## Key Components:
 
@@ -13,8 +13,7 @@ To adhere to GitOps principles, our solution leverages Kubernetes (k8s) with Arg
 
 Prometheus:
 
-- Explains the use of Prometheus for monitoring and alerting.
-- Highlights its ability to collect and store metrics from various components within the Kubernetes cluster.
+- Used to store the metrics
 
 Grafana:
 
@@ -23,17 +22,19 @@ Grafana:
 
 ### Load Testing:
 
-During the initial interview, an important consideration was raised about verifying the application's resilience and ensuring it does not create an overload. To address this concern, our solution employs k6, a powerful load testing tool.
+During the initial interview, an important consideration was raised about verifying the application's resilience and ensuring it does not create an overload. To address this concern, my solution employs k6, a powerful load testing tool.
 
 For this purpose it was choose the K6 framework to create a load test
 
 You can check the load using a dashboard on grafana calling k6
 
+![](./images/grafana-dashboard-3.jpeg)
+
 ## Conclusion 
 
-In crafting our comprehensive solution, we have strategically embraced GitOps principles through the utilization of Kubernetes (k8s) and ArgoCD for automated, declarative application deployment. This approach not only streamlines the deployment process but also ensures version control and transparency, aligning with the fundamental tenets of GitOps.
+In crafting my solution, I have strategically embraced GitOps principles through the utilization of Kubernetes (k8s) and ArgoCD for automated, declarative application deployment. This approach not only streamlines the deployment process but also ensures version control and transparency, aligning with the fundamental tenets of GitOps.
 
-The observability stack, comprising Prometheus and Grafana, adds another layer of robustness to our solution. Prometheus provides a powerful monitoring and alerting system, collecting and storing metrics crucial for identifying issues promptly. Grafana then consolidates these metrics into intuitive dashboards, enhancing overall system observability and simplifying troubleshooting.
+The observability stack, comprising Prometheus and Grafana, adds another layer of robustness to my solution. Prometheus provides a powerful monitoring and alerting system, collecting and storing metrics crucial for identifying issues promptly. Grafana then consolidates these metrics into intuitive dashboards, enhancing overall system observability and simplifying troubleshooting.
 
-Acknowledging the imperative nature of load testing in guaranteeing application resilience, we employ k6, a versatile load testing tool. This choice is rooted in addressing concerns raised during the initial interview about preventing application overload scenarios. By simulating realistic user scenarios and conducting stress tests, we fortify our system against potential bottlenecks. The integration of k6 with Grafana allows for real-time monitoring and dynamic analysis of performance metrics during these tests.
+Acknowledging the imperative nature of load testing in guaranteeing application resilience, I employ k6, a versatile load testing tool. This choice is rooted in addressing concerns raised during the initial interview about preventing application overload scenarios. By simulating realistic user scenarios and conducting stress tests, I fortify  system against potential bottlenecks. The integration of k6 with Grafana allows for real-time monitoring and dynamic analysis of performance metrics during these tests.
 

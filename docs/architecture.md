@@ -1,3 +1,3 @@
 ## Architecture
 
-![](./images/high-level.jpg)
+![](./images/high-level-2.jpg)

@@ -1,6 +1,6 @@
 # Improvements
 
-In order to enhance the project in a more professional manner, we propose the following improvements:
+In order to enhance the project in a more professional manner, I propose the following improvements:
 
 1. **Separate Application and Helm Chart Deployment:**
     - This separation enables better versioning and facilitates project rollbacks through the versioned Helm charts.
@@ -22,6 +22,6 @@ In order to enhance the project in a more professional manner, we propose the fo
 6. **Implement Dynamic CI with Event-Based Validation:**
     - Create a Continuous Integration (CI) system that dynamically responds to events for efficient validation processes.
   
-    ![Event-Based CI](./images/event-ci-2.jpg)
+    ![Event-Based CI](./images/event-ci-3.jpg)
 
 By implementing these improvements, the project can achieve a more scalable, maintainable, and professional infrastructure. Each enhancement addresses specific aspects of the current setup, contributing to a more robust and efficient development environment.

@@ -67,7 +67,7 @@ make third-parties-install name=mysql
 
 Install the project on ArgoCD
 
-> note: we need the `pat` to have the access to get the project on github
+> note: ypu need the `pat` to have the access to get the project on github
 
 
 ```sh
@@ -77,7 +77,7 @@ make app-install app="web" repo_appsets="https://github.com/marcelosf89/gitops-l
 
 ### Important Note 
 
-Minikube run inside the docker and because of it we need to forward the port, but the Ingress was created like a official kubernet cluester, you can check it on project like `lens` or checking on `kubectl`
+Minikube run inside the docker and because of it you need to forward the port, but the Ingress was created like a official kubernet cluester, you can check it on project like `lens` or checking on `kubectl`
 
 | app             | url                   |
 | --------------- | --------------------- |
