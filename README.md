@@ -85,3 +85,10 @@ Minikube run inside the docker and because of it we need to forward the port, bu
 | argocd          | http://localhost:9001 |
 | grafana         | http://localhost:9002 |
 
+
+## Documentations
+
+1. [Solution Overview](./docs/solution.md)
+2. [Project Structure](./docs/project-structure.md)
+3. [Architecture Overview](./docs/architecture.md)
+4. [Improvements](./docs/improvements.md.md)
