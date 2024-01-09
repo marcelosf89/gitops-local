@@ -1,5 +1,12 @@
 # Devops 
 
+## Documentations
+
+1. [Solution Overview](./docs/solution.md)
+2. [Project Structure](./docs/project-structure.md)
+3. [Architecture Overview](./docs/architecture.md)
+4. [Improvements](./docs/improvements.md)
+
 ## Stack
 
 - [Minikube](https://minikube.sigs.k8s.io/docs/)
@@ -86,9 +93,3 @@ Minikube run inside the docker and because of it you need to forward the port, b
 | grafana         | http://localhost:9002 |
 
 
-## Documentations
-
-1. [Solution Overview](./docs/solution.md)
-2. [Project Structure](./docs/project-structure.md)
-3. [Architecture Overview](./docs/architecture.md)
-4. [Improvements](./docs/improvements.md.md)
