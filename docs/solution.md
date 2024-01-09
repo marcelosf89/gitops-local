@@ -6,23 +6,26 @@ To adhere to GitOps principles, my solution leverages Kubernetes (k8s) with Argo
 
 ### ArgoCD Deployment:
 
-- Describes how ArgoCD is employed to manage and automate the deployment of applications in a GitOps fashion.
-- Emphasizes the benefits of declarative configurations and version-controlled manifests.
+Describes how ArgoCD is employed to manage and automate the deployment of applications in a GitOps fashion.
+
+Emphasizes the benefits of declarative configurations and version-controlled manifests.
 
 ### Observability Stack:
 
 Prometheus:
 
-- Used to store the metrics
+Emphasizes the improvement in overall observability and troubleshooting capabilities
 
 Grafana:
 
-- Describes Grafana's role in providing a centralized dashboard for visualizing metrics collected by Prometheus.
-- Emphasizes the improvement in overall observability and troubleshooting capabilities
+Describes Grafana's role in providing a centralized dashboard for visualizing metrics collected by 
+
+![](./images/grafana-dashboard-1.jpeg)
+![](./images/grafana-dashboard-2.jpeg)
 
 ### Load Testing:
 
-During the initial interview, an important consideration was raised about verifying the application's resilience and ensuring it does not create an overload. To address this concern, my solution employs k6, a powerful load testing tool.
+Regarding the problem statement, an important consideration was raised about verifying the application's resilience and ensuring it does not create an overload. To address this concern, my solution employs k6, a powerful load testing tool.
 
 For this purpose it was choose the K6 framework to create a load test
 
